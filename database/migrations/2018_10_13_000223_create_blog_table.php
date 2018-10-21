@@ -22,6 +22,7 @@ class CreateBlogTable extends Migration
             $table->string('img_3', 50);
             $table->boolean('acepted');
             $table->text('note');
+            $table->string('Title', 15);
             $table->text('bBody');
             $table->timestamps();
             $table->softDeletes();
