@@ -18,8 +18,8 @@ class BlogController extends Controller
 
     public function __construct(BlogRepository $blogRepo)
     {
-          $this->middleware('auth');
-          $this->blogRepository = $blogRepo;
+        $this->middleware('auth');
+        $this->blogRepository = $blogRepo;
     }
 
     /**
@@ -75,9 +75,8 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = $this->blogRepository->findWithoutFail($id);
-
         if (empty($blog)) {
-            Flash::error('Blog not found');
+            Flash::error('Entrada no encontrada.');
 
             return redirect(route('blogs.index'));
         }
@@ -97,7 +96,7 @@ class BlogController extends Controller
         $blog = $this->blogRepository->findWithoutFail($id);
 
         if (empty($blog)) {
-            Flash::error('Blog not found');
+            Flash::error('Entrada no encontrada.');
 
             return redirect(route('blogs.index'));
         }
@@ -115,10 +114,11 @@ class BlogController extends Controller
      */
     public function update($id, UpdateBlogRequest $request)
     {
+        dump($id);
         $blog = $this->blogRepository->findWithoutFail($id);
 
         if (empty($blog)) {
-            Flash::error('Blog not found');
+            Flash::error('Entrada no encontrada');
 
             return redirect(route('blogs.index'));
         }

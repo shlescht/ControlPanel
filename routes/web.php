@@ -41,3 +41,5 @@ Route::resource('users', 'UserController');
 Route::resource('people', 'PersonController');
 
 Route::resource('blogs', 'BlogController');
+
+Route::resource('blogs', 'BlogController');

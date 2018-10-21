@@ -27,7 +27,7 @@
     {!! Form::label('acepted', 'Acepted:') !!}
     <label class="checkbox-inline">
         <!-- { !! Form::hidden('acepted', false) !!} -->
-        {!! Form::select('acepted', array('0' => 'Rechazar', '1' => 'Aceptar'), '0'); !!}
+        {{Form::select('acepted', array('0' => 'Rechazar', '1' => 'Aceptar'), '0')}}
     </label>
 </div>
 
@@ -35,6 +35,12 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('note', 'Note:') !!}
     {!! Form::textarea('note', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Title Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('Title', 'Title:') !!}
+    {!! Form::text('Title', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Bbody Field -->

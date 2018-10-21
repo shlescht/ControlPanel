@@ -40,6 +40,12 @@
     <p>{!! $blog->note !!}</p>
 </div>
 
+<!-- Title Field -->
+<div class="form-group">
+    {!! Form::label('Title', 'Title:') !!}
+    <p>{!! $blog->Title !!}</p>
+</div>
+
 <!-- Bbody Field -->
 <div class="form-group">
     {!! Form::label('bBody', 'Bbody:') !!}
@@ -56,5 +62,11 @@
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $blog->updated_at !!}</p>
+</div>
+
+<!-- Deleted At Field -->
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $blog->deleted_at !!}</p>
 </div>
 

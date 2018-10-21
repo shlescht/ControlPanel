@@ -18,8 +18,8 @@ class UserController extends Controller
 
     public function __construct(UserRepository $userRepo)
     {
-      $this->middleware('auth');
-      $this->userRepository = $userRepo;
+        $this->middleware('auth');
+        $this->userRepository = $userRepo;
     }
 
     /**
@@ -56,9 +56,16 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        $input = $request->all();
+        $requestPerson = $request['person'];
 
-        $user = $this->userRepository->create($input);
+        $requestUser = $request['user'];
+
+        dump($requestPerson);
+        dd($requestUser);
+
+
+        // $input = $request->all();
+        // $user = $this->userRepository->create($input);
 
         Flash::success('User saved successfully.');
 

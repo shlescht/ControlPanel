@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Blog
  * @package App\Models
- * @version October 21, 2018, 7:17 pm UTC
+ * @version October 21, 2018, 9:52 pm UTC
  *
  * @property \App\Models\Person person
  * @property \Illuminate\Database\Eloquent\Collection persons
@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string img_3
  * @property boolean acepted
  * @property string note
+ * @property string Title
  * @property string bBody
  */
 class Blog extends Model
@@ -29,7 +30,7 @@ class Blog extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
+    protected $primaryKey = 'IDBg';
     protected $dates = ['deleted_at'];
 
 
@@ -40,6 +41,7 @@ class Blog extends Model
         'img_3',
         'acepted',
         'note',
+        'Title',
         'bBody'
     ];
 
@@ -56,6 +58,7 @@ class Blog extends Model
         'img_3' => 'string',
         'acepted' => 'boolean',
         'note' => 'string',
+        'Title' => 'string',
         'bBody' => 'string'
     ];
 
