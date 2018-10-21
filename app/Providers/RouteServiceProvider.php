@@ -66,6 +66,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         // mapApiRoutes updated for InfyOm installation
+        
         // Route::prefix('api')
         //      ->middleware('api')
         //      ->namespace($this->namespace)
