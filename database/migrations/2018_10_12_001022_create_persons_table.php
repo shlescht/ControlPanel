@@ -15,14 +15,16 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->increments('IDPn');
+            $table->integer('IDUr', false, true)->length(10);
+            $table->integer('IDRl', false, true)->length(10);
             $table->index('IDUr');
-            $table->foreign('IDUr')->references('IDUr')->on('users')->onDelete('cascade');
             $table->index('IDRl');
-            $table->foreign('IDRl')->references('IDRl')->on('roles')->onDelete('cascade');
             $table->string('p_name', 15);
             $table->string('ap_ma', 10);
             $table->string('ap_pa', 10);
             $table->timestamps();
+            $table->foreign('IDUr')->references('IDUr')->on('users')->onDelete('cascade');
+            $table->foreign('IDRl')->references('IDRl')->on('roles')->onDelete('cascade');
         });
     }
 

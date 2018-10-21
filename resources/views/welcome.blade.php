@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Panel de Control</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -59,6 +59,10 @@
                 text-transform: uppercase;
             }
 
+            .img-logo{
+                height:70px;
+            }
+
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -72,23 +76,25 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('register') }}">Registrarse</a>
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Panel de Control
+                    <img class="img-logo" src="{{Route::getFacadeRoot()->current()->uri()}}img/logo.png" alt="Logo">
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="http://www.sircoin.cc/index.html">Inicio</a>
+                    <a href="#">¿Quienes somos?</a>
+                    <a href="#">Equipo</a>
+                    <a href="#">Servicios</a>
+                    <a href="#">ICO (Preventa)</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contacto</a>
                 </div>
             </div>
         </div>
