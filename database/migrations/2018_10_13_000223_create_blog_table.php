@@ -24,6 +24,7 @@ class CreateBlogTable extends Migration
             $table->text('note');
             $table->text('bBody');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('IDPn')->references('IDPn')->on('persons')->onDelete('cascade');
         });
     }

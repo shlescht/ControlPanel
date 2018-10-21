@@ -17,6 +17,7 @@ class CreateRolesTable extends Migration
             $table->increments('IDRl');
             $table->string('r_name', 15);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

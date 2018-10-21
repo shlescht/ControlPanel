@@ -23,6 +23,7 @@ class CreatePersonsTable extends Migration
             $table->string('ap_ma', 10);
             $table->string('ap_pa', 10);
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('IDUr')->references('IDUr')->on('users')->onDelete('cascade');
             $table->foreign('IDRl')->references('IDRl')->on('roles')->onDelete('cascade');
         });
