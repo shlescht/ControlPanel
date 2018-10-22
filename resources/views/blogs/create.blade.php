@@ -11,13 +11,11 @@
         <div class="box box-primary">
 
             <div class="box-body">
-                <div class="row">
                     {!! Form::open(['route' => 'blogs.store']) !!}
 
                         @include('blogs.fields')
 
                     {!! Form::close() !!}
-                </div>
             </div>
         </div>
     </div>

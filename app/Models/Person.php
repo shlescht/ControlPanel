@@ -24,11 +24,11 @@ class Person extends Model
     use SoftDeletes;
 
     public $table = 'persons';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
+    protected $primaryKey = 'IDPn';
     protected $dates = ['deleted_at'];
 
 
@@ -60,7 +60,7 @@ class Person extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
