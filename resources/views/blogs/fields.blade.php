@@ -25,10 +25,8 @@
 <!-- Acepted Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('acepted', 'Acepted:') !!}
-    <label class="checkbox-inline">
-        <!-- { !! Form::hidden('acepted', false) !!} -->
-        {{Form::select('acepted', array('0' => 'Rechazar', '1' => 'Aceptar'), '0')}}
-    </label>
+    <!-- { !! Form::hidden('acepted', false) !!} -->
+    {{Form::select('acepted', array('0' => 'Rechazar', '1' => 'Aceptar'), '0')}}
 </div>
 
 <!-- Note Field -->

@@ -60,8 +60,10 @@ class UserController extends Controller
 
         $requestUser = $request['user'];
 
+        $requestRole = $request['roles'];
         dump($requestPerson);
-        dd($requestUser);
+        dump($requestUser);
+        dd($requestRole);
 
 
         // $input = $request->all();
