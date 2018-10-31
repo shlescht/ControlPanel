@@ -24,7 +24,7 @@ class Person extends Model
     use SoftDeletes;
 
     public $table = 'persons';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -60,7 +60,7 @@ class Person extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
@@ -85,5 +85,10 @@ class Person extends Model
     public function blogs()
     {
         return $this->hasMany(\App\Models\Blog::class);
+    }
+
+    public static function getIDPn($IDUr){
+      return Person::where('IDUr', '=', $IDUr)->select('IDPn')->get();
+
     }
 }

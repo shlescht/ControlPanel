@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Prettus\Repository\Criteria\RequestCriteria;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Repositories\BlogRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
+use App\Models\Person;
 use Response;
+use Input;
+use Flash;
+use Auth;
+
 
 class BlogController extends Controller
 {
@@ -44,7 +48,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blogs.create');
+        $idur = Auth::user()['IDUr'];
+        $idpn = Person::getIDPn($idur)[0]['IDPn'];
+        return view('blogs.create')->with('idpn', $idpn);
     }
 
     /**
@@ -56,14 +62,54 @@ class BlogController extends Controller
      */
     public function store(CreateBlogRequest $request)
     {
-        $input = $request->all();
+        // if $request has files
+        if($request->hasFile('img_1') && $request->hasFile('img_2') && $request->hasFile('img_3')){
 
-        $blog = $this->blogRepository->create($input);
+          // Banner image
+          $imageOne = $request->file('img_1');
+          $nameOne = md5(time() . '_' . pathinfo($imageOne->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $imageOne->getClientOriginalExtension();
 
-        Flash::success('Blog saved successfully.');
+          // Title image
+          $imageTwo = $request->file('img_2');
+          $nameTwo = md5(time() . '_' . pathinfo($imageTwo->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $imageTwo->getClientOriginalExtension();
 
-        return redirect(route('blogs.index'));
-    }
+          // Grill image
+          $imageThree = $request->file('img_3');
+          $nameThree = md5(time() . '_' . pathinfo($imageThree->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $imageThree->getClientOriginalExtension();
+
+          // Creating main array
+          $input = $request->all();
+
+          //Moving Files
+          //Creating blog's storage path
+          $blogStoragePath = storage_path().'/img/blogs/'.md5($input['Title']);
+          \File::makeDirectory($blogStoragePath, $mode = 0777, true, true);
+
+          // Moving each image to the created folder
+          $imageOne->move($blogStoragePath, $nameOne);
+          $imageTwo->move($blogStoragePath, $nameTwo);
+          $imageThree->move($blogStoragePath, $nameThree);
+
+          // Image names array
+          $input['img_1'] = $nameOne;
+          $input['img_2'] = $nameTwo;
+          $input['img_3'] = $nameThree;
+
+          // Creating blog
+          $blog = $this->blogRepository->create($input);
+
+          // Success message
+          Flash::success('¡Blog creado!');
+
+          // blog index redirect
+          return redirect(route('blogs.index'));
+      } else {
+          // Error message
+          Flash::error('Error al crear post');
+
+        }
+
+}
 
     /**
      * Display the specified Blog.
@@ -94,7 +140,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = $this->blogRepository->findWithoutFail($id);
-
+        $idur = \Auth::user()['IDUr'];
+        $idpn = Person::getIDPn($idur)[0]['IDPn'];
         if (empty($blog)) {
             Flash::error('Entrada no encontrada.');
 
