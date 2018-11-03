@@ -10,8 +10,8 @@
        @include('adminlte-templates::common.errors')
        <div class="box box-primary">
            <div class="box-body">
-               <div class="row">
-                   {!! Form::model($blog, ['route' => ['blogs.update', $blog->id], 'method' => 'patch']) !!}
+               <div class="">
+                   {!! Form::model($blog, ['route' => ['blogs.update', $blog->IDBg], 'method' => 'patch', 'enctype' => 'multipart/form-data']) !!}
 
                         @include('blogs.fields')
 

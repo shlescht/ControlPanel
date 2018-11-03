@@ -11,7 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class RoleController extends AppBaseController
+class RoleController extends Controller
 {
     /** @var  RoleRepository */
     private $roleRepository;

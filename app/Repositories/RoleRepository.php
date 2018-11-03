@@ -20,6 +20,7 @@ class RoleRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
+        'IDRl',
         'r_name'
     ];
 

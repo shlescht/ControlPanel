@@ -29,6 +29,7 @@ class Person extends Model
     const UPDATED_AT = 'updated_at';
 
 
+    protected $primaryKey = 'IDPn';
     protected $dates = ['deleted_at'];
 
 
@@ -89,6 +90,9 @@ class Person extends Model
 
     public static function getIDPn($IDUr){
       return Person::where('IDUr', '=', $IDUr)->select('IDPn')->get();
+    }
 
+    public static function getPName($IDUr){
+      return Person::where('IDUr', '=', $IDUr)->select('p_name', 'ap_pa', 'ap_ma')->get();
     }
 }
