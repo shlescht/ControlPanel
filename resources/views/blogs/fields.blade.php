@@ -38,7 +38,7 @@
                   <div class="top_content_wrap row">
                       <div class="col-sm-8">
                           <ul class="left_info">
-                              <li><a href="#"><i class="ti-email"></i>{!! $blog->email !!}</a></li>
+                              <li><a href="#"><i class="ti-email"></i></a></li>
                           </ul>
                       </div>
                   </div>
@@ -56,7 +56,7 @@
       </header><!-- Header Section -->
       <!-- Ticker -->
 
-      <section class="page_header padding" style="background-image: url( {!! 'http://localhost:8000/img/blogs/'.md5($blog->Title).'/'.$blog->img_1 !!} );">
+      <section class="page_header padding" style="background-image: url( {!! !isset($blog->Title)?'http://www.sircoin.cc/img/page-header-background.jpg':'http://localhost:8000/img/blogs/'.md5($blog->Title).'/'.$blog->img_1 !!} );">
           <div class="display-table">
               <div class="table-cell">
                   <div class="container">
@@ -78,18 +78,17 @@
                   <div class="col-md-8 sm-padding">
                       <div class="blog_wrapper">
                           <div class="blog_single">
-                              <img class="mb-20" src="{!! 'http://localhost:8000/img/blogs/'.md5($blog->Title).'/'.$blog->img_2 !!}" width="800" height="500" alt="image">
-                              <h2 class="mb-15">{!! Form::text('Title', null, ['class' => 'form-control']) !!}</h2>
+                              <img class="mb-20" src="{!! !isset($blog->Title)?'http://www.sircoin.cc/img/blog-single.jpg':'http://localhost:8000/img/blogs/'.md5($blog->Title).'/'.$blog->img_2 !!}" width="800" height="500" alt="image">
+                              <h2 class="mb-15">{!! Form::text('Title', null, ['class' => 'form-control', 'placeholder' => 'Titulo']) !!}</h2>
                               <div class="meta-info mb-25">
                                   <span>
-                                      <i class="ti-user"></i> Autor <b>{!! $blog->p_name . ' ' . $blog->ap_pa . ' ' . $blog->ap_ma !!}</b>
+                                      <i class="ti-user"></i> Autor <b>{!! !isset($blog->p_name)? Auth::user()->name : $blog->p_name . ' ' . $blog->ap_pa . ' ' . $blog->ap_ma !!}</b>
                                   </span>
                                   <span>
-                                      <i class="ti-bookmark"></i> Creado <b>{!! $blog->created_at !!}</b>
-                                  </span>
+                                      <i class="ti-bookmark"></i> Creado <b>{!! !isset($blog->p_name)?'00-00-0000':$blog->created_at !!}</b>
                                   </span>
                                   <span>
-                                      <i class="ti-bookmark"></i> Actualizado <b>{!! $blog->updated_at !!}</b>
+                                      <i class="ti-bookmark"></i> Actualizado <b>{!! !isset($blog->p_name)?'00-00-0000':$blog->updated_at !!}</b>
                                   </span>
                               </div><!-- Meta Info -->
                               <p>
@@ -129,7 +128,7 @@
                               <h3 class="mb-20">Comentarios del administrador</h3>
                               <ul class="recent_post">
                                   <li class="mb-10">
-                                      <h4><a>{!! $blog->note !!}</a></h4>
+                                      <h4><a>{!! !isset($blog->p_name)?form::hidden('note', '&nbsp;'):$blog->note !!}</a></h4>
                                   </li>
                               </ul>
                           </div><!-- widget 3 -->
