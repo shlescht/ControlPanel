@@ -42,4 +42,10 @@ class HomeController extends Controller
       Auth::user()->setAttribute('role', $role['r_name']);
       return view('home');
     }
+
+public function slash()
+{
+  return view('welcome');
+}
+
 }
