@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@slash');
+Route::get('/', 'HomeController@root');
+
+Route::get('blogs/{id}/change', 'BlogController@change');
 
 Auth::routes();
 

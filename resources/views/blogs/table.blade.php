@@ -12,7 +12,13 @@
     @foreach($blogs as $blog)
         <tr>
             <td>{!! $blog->IDBg !!}</td>
-            <td>{!! $blog->acepted?'Aceptado':'En espera' !!}</td>
+            <td>
+              @if(Auth::user()->role == "Blogger")
+                {!! $blog->acepted?'Aceptado':'En espera' !!}
+              @elseif(Auth::user()->role == "Admin" || Auth::user()->role == "dev")
+                {!! !$blog->acepted ? __("<a href=".url('blogs/'.$blog->IDBg.'/change')." class='btn btn-success btn-xs'>Aceptar</a>") : __("<a href=".url('blogs/'.$blog->IDBg.'/change')." class='btn btn-warning btn-xs'>Rechazar</a>") !!}
+              @endif
+            </td>
             <td>{!! $blog->Title !!}</td>
             <td>{!! $blog->note !!}</td>
             <td>

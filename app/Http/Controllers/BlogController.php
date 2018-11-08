@@ -31,9 +31,9 @@ class BlogController extends Controller
          private $roleRepository;
 
 
-    public function __construct(BlogRepository $blogRepo, PersonRepository $personRepo, RoleRepository $roleRepo)
-    {
+    public function __construct(BlogRepository $blogRepo, PersonRepository $personRepo, RoleRepository $roleRepo) {
         $this->middleware('auth');
+        $this->middleware('role', ['only'=>'change']);
         $this->personRepository = $personRepo;
         $this->roleRepository = $roleRepo;
         $this->blogRepository = $blogRepo;
@@ -45,8 +45,7 @@ class BlogController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
       $person = $this->personRepository->findWithoutFail(Auth::user()->IDUr);
       $role = $this->roleRepository->findWithoutFail($person['IDRl']);
       Auth::user()->setAttribute('name', $person['p_name'] . ' ' . $person['ap_pa'] . ' ' . $person['ap_ma']);
@@ -64,8 +63,7 @@ class BlogController extends Controller
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
 
       $person = $this->personRepository->findWithoutFail(Auth::user()->IDUr);
       $role = $this->roleRepository->findWithoutFail($person['IDRl']);
@@ -83,8 +81,7 @@ class BlogController extends Controller
      *
      * @return Response
      */
-    public function store(CreateBlogRequest $request)
-    {
+    public function store(CreateBlogRequest $request) {
         // if $request has files
         if($request->hasFile('img_1') && $request->hasFile('img_2') && $request->hasFile('img_3')){
 
@@ -142,8 +139,7 @@ class BlogController extends Controller
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $blog = $this->blogRepository->findWithoutFail($id);
 
         if (empty($blog)) {
@@ -174,8 +170,7 @@ class BlogController extends Controller
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $blog = $this->blogRepository->findWithoutFail($id);
 
 
@@ -211,8 +206,7 @@ class BlogController extends Controller
      *
      * @return Response
      */
-    public function update($id, UpdateBlogRequest $request)
-    {
+    public function update($id, UpdateBlogRequest $request) {
         $blog = $this->blogRepository->findWithoutFail($id);
 
         if (empty($blog)) {
@@ -278,8 +272,7 @@ class BlogController extends Controller
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $blog = $this->blogRepository->findWithoutFail($id);
 
         if (empty($blog)) {
@@ -293,5 +286,11 @@ class BlogController extends Controller
         Flash::success('Blog deleted successfully.');
 
         return redirect(route('blogs.index'));
+    }
+
+    public function change($id) {
+      $blog = $this->blogRepository->findWithoutFail($id)->get();
+      $this->blogRepository->update(['acepted' => !$blog[0]['acepted']], $id);
+      return redirect(route('blogs.index'));
     }
 }

@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function __construct(PersonRepository $personRepo, RoleRepository $roleRepo)
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['only'=>'index']);
         $this->personRepository = $personRepo;
         $this->roleRepository = $roleRepo;
     }
@@ -43,9 +43,8 @@ class HomeController extends Controller
       return view('home');
     }
 
-public function slash()
-{
-  return view('welcome');
-}
+    public function root() {
+      return view('welcome');
+    }
 
 }

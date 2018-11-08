@@ -102,6 +102,17 @@
                                   <ul class="share_icon">
                                       <li>{!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}</li>
                                       <li><a href="{!! route('blogs.index') !!}" class="btn btn-info">Cancel</a></li>
+                                      <li>
+                                        @if(Auth::user()->role == "Blogger")
+                                          {!! $blog->acepted?'Aceptado':'En espera' !!}
+                                        @elseif(Auth::user()->role == "Admin" || Auth::user()->role == "dev")
+                                          <a href="{!! url('blogs/'.$blog->IDBg.'/change') !!}"
+                                            onclick="return confirm('{!! !$blog->acepted ? 'Aceptar' : 'Rechazar' !!} blog no guarda los cambios ¿Est&aacute; seguro?')"
+                                            class='btn {!! !$blog->acepted ? "btn-success" : "btn-warning" !!}  btn-xs'>
+                                            {!! !$blog->acepted ? 'Aceptar' : 'Rechazar' !!}
+                                          </a>
+                                        @endif
+                                      </li>
                                   </ul>
                               </div><!-- Share Wrap -->
                           </div>
@@ -139,6 +150,17 @@
                                       {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                                 </li>
                                   <li><a href="{!! route('blogs.index') !!}" class="btn btn-info">Cancel</a></li>
+                                  <li>
+                                    @if(Auth::user()->role == "Blogger")
+                                      {!! $blog->acepted?'Aceptado':'En espera' !!}
+                                    @elseif(Auth::user()->role == "Admin" || Auth::user()->role == "dev")
+                                      <a href="{!! url('blogs/'.$blog->IDBg.'/change') !!}"
+                                        onclick="return confirm('{!! !$blog->acepted ? 'Aceptar' : 'Rechazar' !!} blog no guarda los cambios ¿Est&aacute; seguro?')"
+                                        class='btn {!! !$blog->acepted ? "btn-success" : "btn-warning" !!}  btn-xs'>
+                                        {!! !$blog->acepted ? 'Aceptar' : 'Rechazar' !!}
+                                      </a>
+                                    @endif
+                                  </li>
                               </ul>
                           </div><!-- widget 3 -->
                       </div>
