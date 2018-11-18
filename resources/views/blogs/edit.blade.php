@@ -11,7 +11,6 @@
                         @include('blogs.fields')
 
                    {!! Form::close() !!}
-               </div>
            </div>
        </div>
    </div>
