@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
+use App\Models\users;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class UserRepository
+ * Class usersRepository
  * @package App\Repositories
- * @version November 18, 2018, 4:45 am UTC
+ * @version November 18, 2018, 5:39 am UTC
  *
- * @method User findWithoutFail($id, $columns = ['*'])
- * @method User find($id, $columns = ['*'])
- * @method User first($columns = ['*'])
+ * @method users findWithoutFail($id, $columns = ['*'])
+ * @method users find($id, $columns = ['*'])
+ * @method users first($columns = ['*'])
 */
-class UserRepository extends BaseRepository
+class usersRepository extends BaseRepository
 {
     /**
      * @var array
@@ -30,6 +30,6 @@ class UserRepository extends BaseRepository
      **/
     public function model()
     {
-        return User::class;
+        return users::class;
     }
 }

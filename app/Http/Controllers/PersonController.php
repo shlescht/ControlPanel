@@ -18,7 +18,6 @@ class PersonController extends Controller
 
     public function __construct(PersonRepository $personRepo)
     {
-        $this->middleware('auth');
         $this->personRepository = $personRepo;
     }
 

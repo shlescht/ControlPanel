@@ -8,16 +8,16 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($users as $user)
+    @foreach($users as $users)
         <tr>
-            <td>{!! $user->email !!}</td>
-            <td>{!! $user->password !!}</td>
-            <td>{!! $user->remember_token !!}</td>
+            <td>{!! $users->email !!}</td>
+            <td>{!! $users->password !!}</td>
+            <td>{!! $users->remember_token !!}</td>
             <td>
-                {!! Form::open(['route' => ['users.destroy', $user->IDUr], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['users.destroy', $users->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('users.show', [$user->IDUr]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('users.edit', [$user->IDUr]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="{!! route('users.show', [$users->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('users.edit', [$users->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}

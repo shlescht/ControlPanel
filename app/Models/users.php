@@ -6,16 +6,16 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class User
+ * Class users
  * @package App\Models
- * @version November 18, 2018, 4:45 am UTC
+ * @version November 18, 2018, 5:39 am UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection persons
  * @property string email
  * @property string password
  * @property string remember_token
  */
-class User extends Model
+class users extends Model
 {
     use SoftDeletes;
 
@@ -31,6 +31,7 @@ class User extends Model
     public $fillable = [
         'email',
         'password',
+        'remember_token'
     ];
 
     /**
@@ -42,6 +43,7 @@ class User extends Model
         'IDUr' => 'integer',
         'email' => 'string',
         'password' => 'string',
+        'remember_token' => 'string'
     ];
 
     /**
