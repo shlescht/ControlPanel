@@ -75,8 +75,8 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Registrarse</a>
+                        <a href="{{ route('login') }}">Entrar</a>
+                        <!-- <a href="{{ route('register') }}">Registrarse</a> -->
                     @endauth
                 </div>
             @endif
@@ -89,12 +89,12 @@
 
                 <div class="links">
                     <a href="http://www.sircoin.cc/index.html">Inicio</a>
-                    <a href="#">¿Quienes somos?</a>
-                    <a href="#">Equipo</a>
-                    <a href="#">Servicios</a>
-                    <a href="#">ICO (Preventa)</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Contacto</a>
+                    <a href="http://www.sircoin.cc/index.html">¿Quienes somos?</a>
+                    <a href="http://www.sircoin.cc/index.html">Equipo</a>
+                    <a href="http://www.sircoin.cc/index.html">Servicios</a>
+                    <a href="http://www.sircoin.cc/index.html">ICO (Preventa)</a>
+                    <a href="http://www.sircoin.cc/index.html">Blog</a>
+                    <a href="http://www.sircoin.cc/index.html">Contacto</a>
                 </div>
             </div>
         </div>

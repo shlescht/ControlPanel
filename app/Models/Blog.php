@@ -68,7 +68,11 @@ class Blog extends Model
      * @var array
      */
     public static $rules = [
-
+      'img_1' => 'required|image',
+      'img_2' => 'required|image',
+      'img_3' => 'required|image',
+      'Title' => 'required|max: 15',
+      'bBody' => 'required'
     ];
 
     /**

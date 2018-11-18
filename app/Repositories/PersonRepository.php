@@ -34,4 +34,9 @@ class PersonRepository extends BaseRepository
     {
         return Person::class;
     }
+
+    public function getyByIDUr(){
+      
+    }
+
 }
