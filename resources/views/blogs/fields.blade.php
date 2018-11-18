@@ -15,7 +15,7 @@
       <!-- animate CSS -->
       <link rel="stylesheet" href="http://www.sircoin.cc/css/animate.min.css">
       <!-- Nivo Slider CSS -->
-      <link rel="stylesheet" href="http://localhost:8000/css/main.css">
+      <link rel="stylesheet" href="{{ url("/css/main.css") }}">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="http://www.sircoin.cc/css/responsive.css">
 
@@ -56,7 +56,7 @@
       </header><!-- Header Section -->
       <!-- Ticker -->
 
-      <section class="page_header padding" style="background-image: url( {!! !isset($blog->Title)?'http://www.sircoin.cc/img/page-header-background.jpg':'http://localhost:8000/img/blogs/'.md5($blog->Title).'/'.$blog->img_1 !!} );">
+      <section class="page_header padding" style="background-image: url( {!! !isset($blog->Title)?'http://www.sircoin.cc/img/page-header-background.jpg':url("/img/blogs/".md5($blog->Title)."/".$blog->img_1) !!} );">
           <div class="display-table">
               <div class="table-cell">
                   <div class="container">
@@ -78,7 +78,7 @@
                   <div class="col-md-8 sm-padding">
                       <div class="blog_wrapper">
                           <div class="blog_single">
-                              <img class="mb-20" src="{!! !isset($blog->Title)?'http://www.sircoin.cc/img/blog-single.jpg':'http://localhost:8000/img/blogs/'.md5($blog->Title).'/'.$blog->img_2 !!}" width="800" height="500" alt="image">
+                              <img class="mb-20" src="{!! !isset($blog->Title)?'http://www.sircoin.cc/img/blog-single.jpg': url('/img/blogs/'.md5($blog->Title).'/'.$blog->img_2) !!}" width="800" height="500" alt="image">
                               <h2 class="mb-15">{!! Form::text('Title', null, ['class' => 'form-control', 'placeholder' => 'Titulo']) !!}</h2>
                               <div class="meta-info mb-25">
                                   <span>
