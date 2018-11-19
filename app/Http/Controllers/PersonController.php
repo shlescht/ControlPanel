@@ -31,7 +31,7 @@ class PersonController extends Controller
     {
         $this->personRepository->pushCriteria(new RequestCriteria($request));
         $people = $this->personRepository->all();
-
+        //dd($people[0]['p_name']);
         return view('people.index')
             ->with('people', $people);
     }

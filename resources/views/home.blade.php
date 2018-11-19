@@ -6,9 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-                <div class="card-header">
-                  <a href="{{Route::getFacadeRoot()->current()->uri()}}/../users">Usuarios</a>
-                </div>
+                @if(Auth::user()->role == "dev" or Auth::user()->role == "Admin")
+                  <div class="card-header">
+                    <a href="{{Route::getFacadeRoot()->current()->uri()}}/../users">Usuarios</a>
+                  </div>
+                @endif
+                <!-- @ if(Auth::user()->role) -->
                 <div class="card-header">
                   <a href="{{Route::getFacadeRoot()->current()->uri()}}/../blogs">Blogs</a>
                 </div>
@@ -18,8 +21,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <b>
+                      Bienvenido,
+                    </b>
+                    {{Auth::user()->name}}
+                    <div>
+                      @include('alerts.errors')
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Prettus\Repository\Criteria\RequestCriteria;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Session;
+use Flash;
 
 class UserController extends AppBaseController
 {
@@ -18,6 +19,11 @@ class UserController extends AppBaseController
 
     public function __construct(UserRepository $userRepo)
     {
+<<<<<<< HEAD
+=======
+        $this->middleware('auth');
+        $this->middleware('role');
+>>>>>>> 8e503b9cbef3c22c186a66492fde8d097d55d8be
         $this->userRepository = $userRepo;
     }
 

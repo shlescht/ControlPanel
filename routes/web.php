@@ -11,18 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@root');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');;
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('blogs/{id}/change', 'BlogController@change');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('users', 'UserController');
 
 Route::resource('people', 'PersonController');
 
 Route::resource('blogs', 'BlogController');
 
 Route::resource('roles', 'RoleController');
-
-Route::resource('users', 'UserController');
