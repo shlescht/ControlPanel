@@ -18,10 +18,10 @@
             <td>{!! $person->ap_ma !!}</td>
             <td>{!! $person->ap_pa !!}</td>
             <td>
-                {!! Form::open(['route' => ['people.destroy', $person->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['people.destroy', $person->IDPn], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('people.show', [$person->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('people.edit', [$person->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="{!! route('people.show', [$person->IDPn]) !!}" class='btn btn-info btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('people.edit', [$person->IDPn]) !!}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}

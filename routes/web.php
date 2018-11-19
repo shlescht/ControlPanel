@@ -25,4 +25,4 @@ Route::resource('blogs', 'BlogController');
 
 Route::resource('roles', 'RoleController');
 
-Route::resource('users', 'usersController');
+Route::resource('users', 'UserController');

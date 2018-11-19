@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Repositories\RoleRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class RoleController extends AppBaseController
+class RoleController extends Controller
 {
     /** @var  RoleRepository */
     private $roleRepository;

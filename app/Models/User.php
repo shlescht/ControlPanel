@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class User
  * @package App\Models
- * @version November 18, 2018, 4:45 am UTC
+ * @version November 19, 2018, 6:04 am UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection persons
  * @property string email
@@ -24,13 +24,14 @@ class User extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
+    protected $primaryKey = 'IDUr';
     protected $dates = ['deleted_at'];
 
 
     public $fillable = [
         'email',
         'password',
+        'remember_token'
     ];
 
     /**
@@ -42,6 +43,7 @@ class User extends Model
         'IDUr' => 'integer',
         'email' => 'string',
         'password' => 'string',
+        'remember_token' => 'string'
     ];
 
     /**

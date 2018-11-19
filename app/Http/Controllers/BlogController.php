@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Repositories\BlogRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -18,7 +17,6 @@ class BlogController extends Controller
 
     public function __construct(BlogRepository $blogRepo)
     {
-        $this->middleware('auth');
         $this->blogRepository = $blogRepo;
     }
 
