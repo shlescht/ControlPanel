@@ -56,11 +56,19 @@ class UserController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateUserRequest $request)
-    {
-        $input = $request->all();
+    public function store(CreateUserRequest $request) {
+        $requestPerson = $request['person'];
 
-        $user = $this->userRepository->create($input);
+        $requestUser = $request['user'];
+
+        $requestRole = $request['roles'];
+        dump($requestPerson);
+        dump($requestUser);
+        dd($requestRole);
+
+
+        // $input = $request->all();
+        // $user = $this->userRepository->create($input);
 
         Flash::success('User saved successfully.');
 
